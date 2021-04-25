@@ -1,0 +1,33 @@
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <title>All Quiz</title>
+    </head>
+<body>
+    <div class="container"> 
+        <div class="row">
+            <form id="start" action="" method="POST">
+                {% csrf_token %}
+
+            <div class="col-6">
+                {% for quiz in quiz_detail %}
+                    Question {{quiz.id}} : {{quiz.question}} <br/>
+                    <input type="radio" id="{{quiz.id}}_answer1" name="{{quiz.id}}" value="{{quiz.answer1}}">
+                    <label for="{{quiz.answer1}}">{{quiz.answer1}}</label><br>
+                    <input type="radio" id="{{quiz.id}}_answer2" name="{{quiz.id}}" value="{{quiz.answer2}}">
+                    <label for="{{quiz.answer2}}">{{quiz.answer2}}</label><br>
+                    <input type="radio" id="{{quiz.id}}_answer3" name="{{quiz.id}}" value="{{quiz.answer3}}">
+                    <label for="{{quiz.answer3}}">{{quiz.answer3}}</label><br>
+                {% endfor %}
+            </div>
+
+            
+                <button type="Submit" name="Submit">Submit Quiz</button>
+            </div>
+            </form>
+        </div>
+    </div> 
+</body>
+</html>
+{% endblock %}
